@@ -16,7 +16,7 @@ const reviewSchema = Mongoose.Schema(
 
 
 const productSchema = Mongoose.Schema({
-  admin: {
+  user: {
     type: Mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "User"
@@ -35,15 +35,11 @@ const productSchema = Mongoose.Schema({
   },
   category:{
     type: String,
-    enum: ["jacket", "jeans", "gloves", "sticker", "patch"],
+    enum: ["Electronics", "jacket", "jeans", "gloves", "sticker", "patch"],
     required: true,
   },
   description:{
     type: String,
-    required: true,
-  },
-  size: {
-    type: Number,
     required: true,
   },
   reviews: [reviewSchema],
