@@ -9,11 +9,11 @@ import { listProductDetails } from "../actions/productActions.js"
 
 const ProductScreen = ({ history, match }) => {
   // using useState to setup quantity of items on product page
-  const [qty, setQty] = useState(0)
+  const [qty, setQty] = useState(1)
   const dispatch = useDispatch()
 
   // getting product data from the state using useSelector
-  const productDetails = useSelector(state => state.productDetails)
+  const productDetails = useSelector((state) => state.productDetails)
   const { loading, error, product } = productDetails
 
   useEffect(() => {
@@ -94,9 +94,10 @@ const ProductScreen = ({ history, match }) => {
                       <Form.Control 
                       as="select" 
                       value={qty}
-                      onChange={(event)=> setQty(event.target.value)}
+                      onChange={(e) => setQty(e.target.value)}
                       >
-                        {[...Array(product.countInStock).keys()].map((initValue) => (
+                        {[...Array(product.countInStock).keys()].map(
+                          (initValue) => (
                           <option key={initValue + 1} value={initValue + 1}>
                             {initValue + 1}
                           </option>
